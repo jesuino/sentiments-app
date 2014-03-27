@@ -9,14 +9,16 @@ by: William Siqueira
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <!-- change it according your app configuration -->
-   <groupId>org.jugvale</groupId>
-   <artifactId>jfx8-app</artifactId>
+   <groupId>org.jugvale.sentiments</groupId>
+   <artifactId>sentiments-app</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <properties>
-      <!-- The final name for the JAR that you can find in target directory-->
-      <jar.final.name>jfx8-app</jar.final.name>
-      <!--  the default class that has the public static void main(String[]) method -->
-      <main.class>org.jugvale.sentiments.App</main.class>
+	<!-- The final name for the JAR that you can find in target directory-->
+	<jar.final.name>sentiments-app</jar.final.name>
+	<!--  the default class that has the public static void main(String[]) method or extends javafx Application -->
+	<main.class>org.jugvale.sentiments.view.App</main.class>
+	<junit-version>4.8.2</junit-version>
+	<resteasy.version>3.0.6.Final</resteasy.version>
    </properties>
    <dependencies>
       <!-- Add your dependencies here
@@ -26,6 +28,28 @@ by: William Siqueira
       <version>{version}</version>
     </dependency>
    -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit-version}</version>
+		<scope>test</scope>
+	</dependency>
+	<!--RESTEasy -->
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jaxrs</artifactId>
+		<version>${resteasy.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jaxb-provider</artifactId>
+		<version>${resteasy.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jackson-provider</artifactId>
+		<version>${resteasy.version}</version>
+	</dependency>
    </dependencies>
    <build>
       <finalName>${jar.final.name}</finalName>
