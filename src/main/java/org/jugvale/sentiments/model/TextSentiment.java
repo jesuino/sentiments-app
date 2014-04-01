@@ -1,28 +1,16 @@
 package org.jugvale.sentiments.model;
 public class TextSentiment{
-	private int id;
 	private String text;
 	private int polarity;
 
+	public TextSentiment(){super();}
 	
-	/**
-	 * Get id.
-	 *
-	 * @return id as int.
-	 */
-	public int getId(){
-	    return id;
+	
+	public TextSentiment(String text){
+		super();
+		this.text = text;
 	}
-	
-	/**
-	 * Set id.
-	 *
-	 * @param id the value to set.
-	 */
-	public void setId(int id){
-	    this.id = id;
-	}
-	
+
 	/**
 	 * Get text.
 	 *
@@ -57,5 +45,8 @@ public class TextSentiment{
 	 */
 	public void setPolarity(int polarity){
 	    this.polarity = polarity;
+	}
+	public String toString(){
+		return "\"" + this.text + "\":" + this.polarity;
 	}
 }
