@@ -70,9 +70,9 @@ public class App extends Application{
 		long polarity4Count = textSentiments.stream().filter(s -> s.getPolarity() == 4).count();
 		chart.setData(
 			FXCollections.observableArrayList(
-			new PieChart.Data(":(", polarity0Count),
-			new PieChart.Data(":|", polarity2Count),
-			new PieChart.Data(":)", polarity4Count)
+				new PieChart.Data(":(", polarity0Count),
+				new PieChart.Data(":|", polarity2Count),
+				new PieChart.Data(":)", polarity4Count)
 		));
 	}
 	public List<TextSentiment> getTextSentiments(String q){
