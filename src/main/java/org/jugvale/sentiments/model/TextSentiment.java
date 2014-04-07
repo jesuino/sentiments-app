@@ -1,4 +1,8 @@
 package org.jugvale.sentiments.model;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TextSentiment{
 	private String text;
 	private int polarity;
