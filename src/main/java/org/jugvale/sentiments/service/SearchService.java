@@ -7,6 +7,13 @@ import twitter4j.*;
 import java.util.stream.Collectors;
 public class SearchService{
 
+	/*
+	 *It's mine!!! Please, use yours
+	 * */
+
+	private final static String TWITTER_CONSUMER_KEY = "B4el0kjAh8CG3WEgafcGHWFt0";
+	private final static String TWITTER_CONSUMER_KEY_SECRET = "vzuSoQhrHzHflKkNOXOAqbbtlS12AhI2CBO33C2cI1sKIAygRw";
+
 	public static enum Provider{
 		TWITTER("Twitter");
 		
@@ -35,11 +42,18 @@ public class SearchService{
 	*/
 	private List<String> searchTwitter(String q){
 		Twitter twitter = new TwitterFactory().getInstance();
-		Query twitterQuery = new Query(q);
+		twitter.setOAuthConsumer(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_KEY_SECRET);
+		Query twitterQuery = new Query("lang:en " + q);
 		try{
-			return twitter.search(twitterQuery).getTweets().stream().map(s -> s.getText()).collect(Collectors.toList());
+			return twitter.search(twitterQuery)
+				.getTweets().stream()
+				// map to text and replace all special chars
+				.map(s -> s.getText().replaceAll("[^a-zA-Z0-9\\s\\,\\.\\']+",""))
+				.peek(System.out::println)
+				.collect(Collectors.toList());
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}
 	}
 }
+

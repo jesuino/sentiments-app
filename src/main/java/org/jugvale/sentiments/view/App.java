@@ -85,8 +85,7 @@ public class App extends Application{
 			return Arrays.asList("obama is awesome", "obama sucks", "obama eats potato");
 		}else{
 			// TODO: add new providers and adapt the app to support it
-			searchService.search(q, SearchService.Provider.TWITTER);
-			return null;
+			return 	searchService.search(q, SearchService.Provider.TWITTER);
 		}
 	}
  }
