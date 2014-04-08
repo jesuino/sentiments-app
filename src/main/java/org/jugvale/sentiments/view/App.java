@@ -9,13 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.chart.*;
-import org.jugvale.sentiments.service.TextSentimentService;
+import org.jugvale.sentiments.service.*;
 import org.jugvale.sentiments.model.*;
 import java.util.*;
 
 public class App extends Application{
 
 	final TextSentimentService textSentimentService = new TextSentimentService();
+	final SearchService searchService = new SearchService();
 	final PieChart chart =  new PieChart();
 	final TableView<TextSentiment> table = new TableView<>();
 	final TextField txtQuery = new TextField();
@@ -26,7 +27,7 @@ public class App extends Application{
 
 	@Override
 	public void start(Stage stage){
-		VBox root = new VBox();
+		VBox root = new VBox(10);
 		root.getChildren().addAll(txtQuery, chart, table);
 		stage.setScene(new Scene(root));
 		stage.setWidth(400);
@@ -80,10 +81,12 @@ public class App extends Application{
 	}
 
 	public List<String> query(String q){
-		if(q == null)
+		if(q == null){
 			return Arrays.asList("obama is awesome", "obama sucks", "obama eats potato");
-			// return something meaningful, like search twitter...
-		else
+		}else{
+			// TODO: add new providers and adapt the app to support it
+			searchService.search(q, SearchService.Provider.TWITTER);
 			return null;
+		}
 	}
  }

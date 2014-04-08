@@ -55,6 +55,11 @@ by: William Siqueira
 		<artifactId>resteasy-jackson-provider</artifactId>
 		<version>${resteasy.version}</version>
 	</dependency>
+	<dependency>
+           <groupId>org.twitter4j</groupId>
+           <artifactId>twitter4j-core</artifactId>
+           <version>4.0.1</version>
+       </dependency>
    </dependencies>
    <build>
       <finalName>${jar.final.name}</finalName>
