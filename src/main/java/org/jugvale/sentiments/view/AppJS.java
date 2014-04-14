@@ -2,13 +2,12 @@ package org.jugvale.sentiments.view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import java.nio.file.*;
 import javax.script.*;;
-import java.net.URL;
+import java.io.FileReader;
 
 public class AppJS extends Application{
 
-	private final URL SCRIPT = getClass().getResource("/sentimentsView.js");
+	private final String SCRIPT = getClass().getResource("/sentimentsView.js").getPath();
 
 	public static void main(String args[]){
 		launch(args);
@@ -19,8 +18,7 @@ public class AppJS extends Application{
 		try{
 			ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 			engine.put("stage", stage);
-			String scriptContent = new String(Files.readAllBytes((Paths.get(SCRIPT.toURI()))));
-			engine.eval(scriptContent);
+			engine.eval(new FileReader(SCRIPT));
 		}catch(Exception e){
 			e.printStackTrace();
 		}
